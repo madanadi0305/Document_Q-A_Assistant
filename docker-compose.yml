@@ -1,0 +1,15 @@
+services:
+  document-summarizer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: document-summarizer:latest
+    container_name: document-summarizer
+    working_dir: /app
+    stdin_open: true
+    tty: true
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
+    command: python DocumentSummarizer.py
